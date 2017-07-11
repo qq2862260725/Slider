@@ -1,4 +1,4 @@
-.wrap {
+#wrap {
   position: absolute;
 	width: 600px;
 	height: 400px;
@@ -10,7 +10,7 @@
 #slider {
 	height: 100%;
 	width: 500%;
-  -webkit-animation:slide1 10s ease-out infinite;
+  -webkit-animation:slide1 20s ease-out infinite;
 }
 #slider li {
   float:left;
@@ -22,92 +22,93 @@
   width: 100%;
 }
 
+
 @-webkit-keyframes slide1 {
-  0% { margin-left:0;}
-  20% { margin-left:-600px;}
-  40% { margin-left:-1200px;}
-  60% { margin-left:-1800px;}
-  80% { margin-left:-2400px;}
-  100% {margin-left:0;}
+  0% { margin-left: 0;}
+  20% { margin-left: -600px;}
+  40% { margin-left: -1200px;}
+  60% { margin-left: -1800px;}
+  80% { margin-left: -2400px;}
+  100% {margin-left: 0;}
 }
 
 @-webkit-keyframes slide2 {
-  0% { margin-left:600px;}
-  20% { margin-left:0;}
-  40% { margin-left:-600px;}
-  60% { margin-left:-1200px;}
-  80% { margin-left:-1800px;}
-  100% {margin-left:600px;}
+  0% { margin-left: -600px;}
+  20% { margin-left: -1200px;}
+  40% { margin-left: -1800px;}
+  60% { margin-left: -2400px;}
+  80% { margin-left: 0;}
+  100% {margin-left: -600px;}
 }
 
 @-webkit-keyframes slide3 {
-  0% { margin-left:1200px;}
-  20% { margin-left:600px;}
-  40% { margin-left:0;}
-  60% { margin-left:-600px;}
-  80% { margin-left:-1200px;}
-  100% {margin-left:1200px;}
+  0% { margin-left: -1200px;}
+  20% { margin-left: -1800px;}
+  40% { margin-left: -2400px;}
+  60% { margin-left: 0;}
+  80% { margin-left: -600px;}
+  100% {margin-left: -1200px;}
 }
+
 @-webkit-keyframes slide4 {
-  0% { margin-left:1800px;}
-  20% { margin-left:1200px;}
-  40% { margin-left:600px;}
-  60% { margin-left:0px;}
-  80% { margin-left:-600px;}
-  100% {margin-left:1800px;}
+  0% { margin-left: -1800px;}
+  20% { margin-left: -2400px;}
+  40% { margin-left: 0;}
+  60% { margin-left: -600px;}
+  80% { margin-left: -1200px;}
+  100% {margin-left: -1800px;}
 }
+
 @-webkit-keyframes slide5 {
-  0% { margin-left:2400px;}
-  20% { margin-left:1800px;}
-  40% { margin-left:1200px;}
-  60% { margin-left:600px;}
-  80% { margin-left:0px;}
-  100% {margin-left:2400px;}
+  0% { margin-left: -2400px;}
+  20% { margin-left: 0;}
+  40% { margin-left: -600px;}
+  60% { margin-left: -1200px;}
+  80% { margin-left: -1800px;}
+  100% {margin-left: -2400px;}
 }
+
 
 
 /*修改动画名称*/
 #l01:checked ~ #wrap #slider {
-  -webkit-animation-name:slide1;
+  -webkit-animation-name: slide1;
 }
 
 #l02:checked ~ #wrap #slider {
-  -webkit-animation-name:slide2;
+  -webkit-animation-name: slide2;
 }
 
 #l03:checked ~ #wrap #slider {
-  -webkit-animation-name:slide3;
+  -webkit-animation-name: slide3;
 }
 #l04:checked ~ #wrap #slider {
-  -webkit-animation-name:slide4;
+  -webkit-animation-name: slide4;
 }
 #l05:checked ~ #wrap #slider {
-  -webkit-animation-name:slide5;
+  -webkit-animation-name: slide5;
 }
 
 
-/*短暂地取消动画名称，模拟重启动画*/
-#l01:active ~ #wrap #slider {
-  -webkit-animation-name:none;
-  margin-left:0;
+/*隐藏input按钮*/
+#l01 ,#l02 ,#l03 ,#l04 ,#l05 {
+  display: none;
 }
 
-#l02:active ~ #wrap #slider {
-  -webkit-animation-name:none;
-  margin-left:-600px;
+/*dots选中*/
+#opts {
+  position: absolute;
+  height: 10px;
+  width: 110px;
+  left: 50%;
+  margin-left: -50px;
+  bottom: 30px;
 }
-
-#l03:active ~ #wrap #slider {
-  -webkit-animation-name:none;
-  margin-left:-1200px;
+#opts label {
+  height: 100%;
+  width: 10px;
+  float: left;
+  margin: 0 5px;
+  border-radius: 5px;
+  background-color: #fff;
 }
-#l04:active ~ #wrap #slider {
-  -webkit-animation-name:none;
-  margin-left:-1800px;
-}
-
-#l05:active ~ #wrap #slider {
-  -webkit-animation-name:none;
-  margin-left:-2400px;
-}
-
