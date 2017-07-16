@@ -1,16 +1,14 @@
-window.onload = function() {
+window.onload = function(){
     var animated = false;
     var index = 1;
     var timer;
-    var interval = 3000;
     var wrap = document.getElementById('wrap');
     var list = document.getElementById('list');
     var buttons = document.getElementById('buttons').getElementsByTagName('span');
     var prev = document.getElementById('prev');
     var next = document.getElementById('next');
-    console.log(buttons);
 
-    //Slider动画函数
+    //Banner动画函数
     function animate(offset){
         if (offset == 0) {
             return;
@@ -20,7 +18,6 @@ window.onload = function() {
         var inteval = 50;
         var speed = offset/(time/inteval);
         var left = parseInt(list.style.left) + offset;
-
         var go = function() {
             if ( (speed > 0 && parseInt(list.style.left) < left) || (speed < 0 && parseInt(list.style.left) > left)) {
                 list.style.left = parseInt(list.style.left) + speed + 'px';
@@ -38,7 +35,6 @@ window.onload = function() {
         }
         go();
     }
-    //焦点动画函数
     function showButton() {
         for (var i = 0; i < buttons.length; i++) {
             if (buttons[i].className == 'on') {
@@ -48,9 +44,8 @@ window.onload = function() {
         }
         buttons[index-1].className = 'on';
     }
-    //焦点点击事件
     for (var i = 0; i < buttons.length; i++) {
-        buttons[i].onclick = function() {
+        buttons[i].onclick = function(){
             if (animated) {
                 return;
             }
@@ -64,21 +59,22 @@ window.onload = function() {
             showButton();
         }
     }
-    //动画自动播放函数
-    function play(){
-        timer = setTimeout(function(){
+    
+    //播放的暂停与继续
+    function play() {
+         timer = setTimeout(function(){
             prev.onclick();
             play();
-        },interval)
+         },3000)
     }
     play();
-    //动画暂停函数
-    function stop() {
+    function stop(){
         clearTimeout(timer);
     }
-    wrap.onmouseover = stop;
-    wrap.onmouseout = play;
-    //左箭头
+    wrap.onmouseover = stop();
+    wrap.onmousrout = play();
+
+    //箭头点击函数
     prev.onclick = function(){
         if (animated) {
             return;
@@ -91,8 +87,7 @@ window.onload = function() {
         animate(-600);
         showButton();
     }
-    //右箭头
-    next.onclick = function(){
+    next.onclick = function() {
         if (animated) {
             return;
         }
