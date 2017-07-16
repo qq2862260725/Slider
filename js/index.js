@@ -1,6 +1,7 @@
 window.onload = function() {
-    var index = 1;
     var animated = false;
+    var index = 1;
+    var timer;
     var interval = 3000;
     var wrap = document.getElementById('wrap');
     var list = document.getElementById('list');
@@ -9,8 +10,8 @@ window.onload = function() {
     var next = document.getElementById('next');
     console.log(buttons);
 
-    //动画封装函数
-    function animate(offset) {
+    //Slider动画函数
+    function animate(offset){
         if (offset == 0) {
             return;
         }
@@ -33,12 +34,11 @@ window.onload = function() {
                     list.style.left = -600 + 'px';
                 }
                 animated = false;
-                console.log(animated);
             }
         }
         go();
     }
-    //焦点动画
+    //焦点动画函数
     function showButton() {
         for (var i = 0; i < buttons.length; i++) {
             if (buttons[i].className == 'on') {
@@ -50,22 +50,21 @@ window.onload = function() {
     }
     //焦点点击事件
     for (var i = 0; i < buttons.length; i++) {
-        buttons[i].onclick = function(){
+        buttons[i].onclick = function() {
             if (animated) {
                 return;
             }
             if (this.className == 'on') {
                 return;
             }
-            var myIndex = parseInt(this.getAttribute('index'));
+            var myIndex = this.getAttribute('index');
             var offset = -600*(myIndex-index);
             animate(offset);
             index = myIndex;
             showButton();
-
         }
     }
-    //自动播放与停止播放
+    //动画自动播放函数
     function play(){
         timer = setTimeout(function(){
             prev.onclick();
@@ -73,7 +72,8 @@ window.onload = function() {
         },interval)
     }
     play();
-    function stop(){
+    //动画暂停函数
+    function stop() {
         clearTimeout(timer);
     }
     wrap.onmouseover = stop;
