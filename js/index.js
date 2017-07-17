@@ -1,7 +1,8 @@
-window.onload = function(){
+window.onload = function() {
     var animated = false;
     var index = 1;
     var timer;
+    var interval = 3000;
     var wrap = document.getElementById('wrap');
     var list = document.getElementById('list');
     var buttons = document.getElementById('buttons').getElementsByTagName('span');
@@ -35,7 +36,7 @@ window.onload = function(){
         }
         go();
     }
-    function showButton() {
+    function showButton(){
         for (var i = 0; i < buttons.length; i++) {
             if (buttons[i].className == 'on') {
                 buttons[i].className = '';
@@ -59,22 +60,8 @@ window.onload = function(){
             showButton();
         }
     }
-    
-    //播放的暂停与继续
-    function play() {
-         timer = setTimeout(function(){
-            prev.onclick();
-            play();
-         },3000)
-    }
-    play();
-    function stop(){
-        clearTimeout(timer);
-    }
-    wrap.onmouseover = stop();
-    wrap.onmousrout = play();
 
-    //箭头点击函数
+    //箭头点击事件函数
     prev.onclick = function(){
         if (animated) {
             return;
@@ -87,7 +74,7 @@ window.onload = function(){
         animate(-600);
         showButton();
     }
-    next.onclick = function() {
+    next.onclick = function(){
         if (animated) {
             return;
         }
@@ -99,4 +86,18 @@ window.onload = function(){
         animate(600);
         showButton();
     }
+
+    //自动&&暂停函数
+    function play() {
+        timer = setTimeout(function(){
+            prev.onclick();
+            play();
+        },interval)
+    }
+    play();
+    function stop(){
+        clearTimeout(timer);
+    }
+    wrap.onmouseover = stop;
+    wrap.onmouseout = play;
 }
